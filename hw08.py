@@ -638,7 +638,7 @@ def run_func(op_code_node):
 
         if(node.value.type is TokenType.TRUE) :
             a = node.value.next.value
-            return Node(TokenType.INT, a)
+            return Node(a.type, a) # modify this line by DHN
         else :
             return run_cond(node.next)
 
