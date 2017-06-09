@@ -650,8 +650,18 @@ def run_func(op_code_node):
         temp[save_node.value] = save_value
         symbol_table.update(temp)
         return temp
-    
+
     def lambda_1(node) : #add lambda_1 method by SJH
+        def lookupLambdaTalbe(node) : # add lookupLamdaTable method by SJH
+            while node is not None:
+                if node.type is TokenType.LIST:
+                    lookupLambdaTalbe(node.value)
+                else:
+                    if lambda_table.has_key(node.value):
+                        node.type = lambda_table.get(node.value).type
+                        node.value = lambda_table.get(node.value).value
+                node = node.next
+
         lambda_table = {}
         input_value = node.next
         input_node = node.value.next
