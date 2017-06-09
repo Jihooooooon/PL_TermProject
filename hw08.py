@@ -799,8 +799,14 @@ def Test_method(input):
     node = test_basic_paser.parse_expr()
     lookupTable(node) # add this line by DHN
     cute_inter = run_expr(node)
-    print '...',
-    print print_node(cute_inter)
+    if type(cute_inter) is not dict: # modify printing part by DHN
+        print '...',
+        print print_node(cute_inter)
+    else :
+        tempKey = cute_inter.keys()
+        tempValue = cute_inter.values()
+        print tempKey[0]+"        ;;",
+        print print_node(tempValue[0])
 
 """
 def Test_All():
