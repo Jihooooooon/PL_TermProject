@@ -355,6 +355,8 @@ def run_list(root_node):
     return run_func(op_code_node)(root_node)
 
 
+symbol_table = {} # add symbol_table by DHN
+
 def run_func(op_code_node):
     """
     :type op_code_node:Node/
