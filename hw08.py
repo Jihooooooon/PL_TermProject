@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import copy
 from string import letters, digits, whitespace
 
 
@@ -350,6 +351,8 @@ def run_list(root_node):
     """
     :type root_node: Node
     """
+    if root_node.value.type is TokenType.LIST:
+        root_node = root_node.value
     op_code_node = root_node.value
 
     return run_func(op_code_node)(root_node)
@@ -915,10 +918,10 @@ def Test_All() :
     while True :
 
         a = raw_input(">")
+        Test_method(a)
         if a=="exit":
             print "콘솔창을 종료합니다..."
             break;
-        Test_method(a)
 
 
 
