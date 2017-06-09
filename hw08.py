@@ -848,7 +848,7 @@ def Test_method(input):
 
 """
 def Test_All():
-    Test_method("(+ 1 2 )")
+
     Test_method("(- ( + 1 2 ) 4 )")
     Test_method("(* 3 2 )")
     Test_method("(/ 10 2 )")
