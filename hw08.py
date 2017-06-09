@@ -642,7 +642,14 @@ def run_func(op_code_node):
         else :
             return run_cond(node.next)
 
+    def define(node): # add define method (run_func) by DHN
 
+        save_node = node.value.next
+        save_value = run_expr(save_node.next)
+        temp = {}
+        temp[save_node.value] = save_value
+        symbol_table.update(temp)
+        return temp
 
 
     def create_new_quote_list(value_node, list_flag=False):
