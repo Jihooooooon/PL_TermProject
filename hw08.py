@@ -848,7 +848,7 @@ def Test_method(input):
 
 """
 def Test_All():
-
+    Test_method("(+ 1 2 )")
     Test_method("(- ( + 1 2 ) 4 )")
     Test_method("(* 3 2 )")
     Test_method("(/ 10 2 )")
@@ -859,6 +859,38 @@ def Test_All():
     Test_method("(null? '( 1 2 3) )")
     Test_method("(cond (#F 1) ( #T 2 ) )")
     Test_method("(cond ( ( null? ' ( 1 2 3 ) ) 1 ) ( ( > 100 10 ) 2 ) ( #T 3 ) )")
+    Test_method("(define a 1)")
+    Test_method("(define b `(1 2 3))")
+    Test_method("(define c (- 5 2))")
+    Test_method("(define d `(+ 2 3))")
+    Test_method("(define test b)")
+    Test_method("(+ a 3)")
+    Test_method("(define a 2)")
+    Test_method("(* a 4)")
+    Test_method("((lambda (x) (* x -2)) 3)")
+    Test_method("((lambda (x) (/ x 2)) a)")
+    Test_method("((lambda (x y) (* x y)) 3 5)")
+    Test_method("((lambda (x y) (* x y)) a 5)")
+    Test_method("(define plus1 (lambda (x) (+ x 1)))")
+    Test_method("(plus1 3)")
+    Test_method((define mul1 (lambda (x) (* x a))))
+    Test_method("(mul1 a)")
+    Test_method("(define plus2 (lambda (x) (+ (plus1 x) 1)))")
+    Test_method("(plus2 4)")
+    Test_method("(define plus3 (lambda (x) (+ (plus1 x) a)))")
+    Test_method("(plus3 a)")
+    Test_method("(define mul2  (lambda (x) (* (plus1 x) -2)))")
+    Test_method("(mul2 7)")
+    Test_method("(define lastitem  (lambda (ls)   (cond ((null? (cdr ls)) (car ls))  (#T (lastitem (cdr ls))))))")
+    Test_method("(define square (lambda (x) (* x x)))")
+    Test_method("(define yourfunc (lambda (x func) (func x))")
+    Test_method("(yourfunc 3 square)")
+    Test_method("(define square (lambda (x) (* x x)))")
+    Test_method("(define multwo (lambda (x) (* 2 x)))")
+    Test_method("(define newfun (lambda (fun1 fun2 x) (fun2 (fun1 x))))")
+    Test_method("(newfun square multwo 10)")
+    Test_method("(define cube  (lambda (n) (define sqrt (lambda (n) (* n n))) (* (sqrt n) n)))")
+    Test_method("(sqrt 4)")
 """
 def Test_All() :
     while True :
