@@ -650,6 +650,27 @@ def run_func(op_code_node):
         temp[save_node.value] = save_value
         symbol_table.update(temp)
         return temp
+    
+    def lambda_1(node) : #add lambda_1 method by SJH
+        lambda_table = {}
+        input_value = node.next
+        input_node = node.value.next
+        input_func = input_node.next
+        temp = input_node.value
+        if input_value is not None:
+            while temp is not None:
+                input_temp={}
+                input_temp[temp.value] = input_value
+                input_value = input_value.next
+                lambda_table.update(input_temp)
+                temp = temp.next
+            temp_func = copy.deepcopy(input_func)
+            lookupLambdaTalbe(temp_func)
+
+
+            return run_expr(temp_func)
+        else:
+            return node
 
     def create_new_quote_list(value_node, list_flag=False):
         """
