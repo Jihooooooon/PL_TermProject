@@ -689,6 +689,7 @@ def run_func(op_code_node):
     table['>'] = gt
     table['='] = eq
     table['cond'] = cond
+    table['lambda'] = lambda_1#add by SJH
     table['define'] = define # add table to define by DHN
 
     return table[op_code_node.value]
