@@ -778,7 +778,7 @@ def print_node(node):
     if node.type is TokenType.QUOTE:
         return "'"+print_node(node.next)
 
-def lookupTable(node):
+def lookupTable(node): # add lookupTable method by DHN
     temp = node
     if node.type is TokenType.DEFINE :
         node = node.next.next
@@ -797,6 +797,7 @@ def Test_method(input):
     test_tokens = test_cute.tokenize()
     test_basic_paser = BasicPaser(test_tokens)
     node = test_basic_paser.parse_expr()
+    lookupTable(node) # add this line by DHN
     cute_inter = run_expr(node)
     print '...',
     print print_node(cute_inter)
