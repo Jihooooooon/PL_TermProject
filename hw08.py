@@ -651,7 +651,6 @@ def run_func(op_code_node):
         symbol_table.update(temp)
         return temp
 
-
     def create_new_quote_list(value_node, list_flag=False):
         """
         :type value_node: Node
@@ -834,10 +833,11 @@ def Test_All() :
     while True :
 
         a = raw_input(">")
-        Test_method(a)
         if a=="exit":
             print "콘솔창을 종료합니다..."
             break;
+        Test_method(a)
+
 
 
 
