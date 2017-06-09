@@ -668,17 +668,23 @@ def run_func(op_code_node):
         input_func = input_node.next
         temp = input_node.value
         if input_value is not None:
-            while temp is not None:
-                input_temp={}
-                input_temp[temp.value] = input_value
-                input_value = input_value.next
-                lambda_table.update(input_temp)
-                temp = temp.next
-            temp_func = copy.deepcopy(input_func)
-            lookupLambdaTalbe(temp_func)
-
-
-            return run_expr(temp_func)
+            if input_func.next is not None:
+                while input_func.next is not None:
+                    input_temp = {}
+                    input_temp[temp.value] = input_value
+                    lambda_table.update(input_temp)
+                    temp_func = copy.deepcopy(run_expr(input_func))
+                    input_func = input_func.next
+            else:
+                while temp is not None:
+                    input_temp={}
+                    input_temp[temp.value] = input_value
+                    input_value = input_value.next
+                    lambda_table.update(input_temp)
+                    temp = temp.next
+                temp_func = copy.deepcopy(input_func)
+                lookupLambdaTalbe(temp_func)
+                return run_expr(temp_func)
         else:
             return node
 
