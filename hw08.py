@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import copy
 from string import letters, digits, whitespace
 
 
@@ -350,6 +351,8 @@ def run_list(root_node):
     """
     :type root_node: Node
     """
+    if root_node.value.type is TokenType.LIST:
+        root_node = root_node.value
     op_code_node = root_node.value
 
     return run_func(op_code_node)(root_node)
@@ -879,9 +882,9 @@ def Test_All():
     Test_method("(cond (#F 1) ( #T 2 ) )")
     Test_method("(cond ( ( null? ' ( 1 2 3 ) ) 1 ) ( ( > 100 10 ) 2 ) ( #T 3 ) )")
     Test_method("(define a 1)")
-    Test_method("(define b `(1 2 3))")
+    Test_method("(define b '(1 2 3))")
     Test_method("(define c (- 5 2))")
-    Test_method("(define d `(+ 2 3))")
+    Test_method("(define d '(+ 2 3))")
     Test_method("(define test b)")
     Test_method("(+ a 3)")
     Test_method("(define a 2)")
@@ -892,7 +895,7 @@ def Test_All():
     Test_method("((lambda (x y) (* x y)) a 5)")
     Test_method("(define plus1 (lambda (x) (+ x 1)))")
     Test_method("(plus1 3)")
-    Test_method((define mul1 (lambda (x) (* x a))))
+    Test_method("(define mul1 (lambda (x) (* x a)))")
     Test_method("(mul1 a)")
     Test_method("(define plus2 (lambda (x) (+ (plus1 x) 1)))")
     Test_method("(plus2 4)")
@@ -909,16 +912,17 @@ def Test_All():
     Test_method("(define newfun (lambda (fun1 fun2 x) (fun2 (fun1 x))))")
     Test_method("(newfun square multwo 10)")
     Test_method("(define cube  (lambda (n) (define sqrt (lambda (n) (* n n))) (* (sqrt n) n)))")
+    Test_method("(cube 2)")
     Test_method("(sqrt 4)")
 """
 def Test_All() :
     while True :
 
         a = raw_input(">")
+        Test_method(a)
         if a=="exit":
             print "콘솔창을 종료합니다..."
             break;
-        Test_method(a)
 
 
 
