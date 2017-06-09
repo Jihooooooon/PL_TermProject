@@ -807,6 +807,8 @@ def print_node(node):
         return 'cons'
     if node.type is TokenType.LAMBDA:
         return 'lambda'
+    if node.type is TokenType.DEFINE:
+        return 'define'
     if node.type is TokenType.NULL_Q:
         return 'null?'
     if node.type is TokenType.EQ_Q:
